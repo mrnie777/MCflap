@@ -13,10 +13,10 @@ pygame.init()
 # Define variables
 WIDTH, HEIGHT = 551, 720
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Flap frog")
+pygame.display.set_caption("Flap")
 manager = pygame_gui.UIManager((WIDTH, HEIGHT))
 text_input = pygame_gui.elements.UITextEntryLine(
-    relative_rect=pygame.Rect((40, 200), (500, 50)),
+    relative_rect=pygame.Rect((40, 200), (500, 50)), #game window
     manager=manager,
     object_id='main_text_entry'
 )
@@ -142,7 +142,7 @@ class Bird(pygame.sprite.Sprite):
         if self.vel == 0:
             self.flap = False
 
-        self.image = pygame.transform.rotate(self.image, self.vel * -7)
+        self.image = pygame.transform.rotate(self.image, self.vel * -7) #rotate bird to face down when falling and up when going up
 
         if user_input[pygame.K_SPACE] and not self.flap and self.rect.y > 0 and self.alive:
             self.flap = True
